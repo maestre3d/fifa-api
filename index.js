@@ -26,7 +26,7 @@ if (cluster.isMaster) {
             cluster.fork();
         });    
 } else {
-    mongoose.connect('mongodb://localhost:27017/fifa' , {useNewUrlParser: true}, (err) => {
+    mongoose.connect('mongodb://localhost:27017/fifa' , {useNewUrlParser: true, useFindAndModify: false}, (err) => {
         err ? console.log('Database server connection failed') : app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
     });
 }
