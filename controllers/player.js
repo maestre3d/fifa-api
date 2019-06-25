@@ -6,6 +6,8 @@ async function Create( req, res ) {
     try {
         if ( !params.name || !params.surname || !params.nation ) return res.status(400).send({message: 'Fill all the fields.'});
 
+        if( !params.alias ) { params.alias = `${params.name} ${params.surname}`; }
+
         const playerFound = await Player.findOne({$and: [ { name: params.name }, { surname: params.surname } ]});
         if (playerFound) return res.status(400).send({ message: 'Player already exists.' });
 
