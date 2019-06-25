@@ -9,7 +9,7 @@ const PlayerSchema = new Schema({
     age: { type: Number, default: 12 },
     nation: String,
     birthdate: { type: Number, default: new Date().getTime() },
-    team: { type: Schema.ObjectId, ref: 'Team', default: null }
+    team: [{ type: Schema.ObjectId, ref: 'Team', default: null }]
 });
 PlayerSchema.plugin(mongoosePaginate);
 
